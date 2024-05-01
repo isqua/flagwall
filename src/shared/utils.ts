@@ -18,3 +18,15 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
         image.src = src;
     });
 }
+
+export async function getFullfiled<T>(promises: Promise<T>[]): Promise<T[]> {
+    const results = await Promise.allSettled(promises)
+
+    return results.reduce<T[]>((acc, result) => {
+        if (result.status === 'fulfilled') {
+            acc.push(result.value)
+        }
+
+        return acc;
+    }, []);
+}

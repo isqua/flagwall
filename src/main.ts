@@ -1,6 +1,6 @@
 import { getFlagSrc } from './flags/flagIcons';
 import { CanvasManager, ImageGenerator } from './images';
-import { loadImage, querySelectorSafe } from './shared/utils';
+import { getFullfiled, loadImage, querySelectorSafe } from './shared/utils';
 
 import './style.css';
 
@@ -9,7 +9,12 @@ const image = querySelectorSafe<HTMLImageElement>('.device-screen');
 
 const manager = new CanvasManager(canvas);
 const generator = new ImageGenerator(manager, image);
+const codes = window.location.hash.slice(1).split(',');
 
 (async function main() {
-    generator.render(await loadImage(getFlagSrc('al')));
+    const flags = await getFullfiled(
+        codes.map(code => loadImage(getFlagSrc(code)))
+    );
+
+    generator.render(flags);
 })();
