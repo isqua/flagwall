@@ -1,3 +1,19 @@
+type ImageParams = {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+}
+
+type BorderedImageParams = ImageParams & {
+    borderWidth: number;
+    borderColor: string;
+}
+
+function isBordered(params: ImageParams | BorderedImageParams): params is BorderedImageParams {
+    return 'borderWidth' in params;
+}
+
 export class CanvasManager {
     #context: CanvasRenderingContext2D;
 
@@ -22,7 +38,7 @@ export class CanvasManager {
     setSize(width: number, height: number) {
         this.canvas.width = width;
         this.canvas.height = height;
-        
+
         return this;
     }
 
@@ -37,9 +53,28 @@ export class CanvasManager {
         return this;
     }
 
+    drawImage(image: HTMLImageElement, params: (ImageParams | BorderedImageParams)) {
+        if (isBordered(params)) {
+            this.#context.fillStyle = params.borderColor;
+
+            this.#context.fillRect(
+                params.x - params.borderWidth,
+                params.y - params.borderWidth,
+                params.width + params.borderWidth * 2,
+                params.height + params.borderWidth * 2,
+            );
+        }
+
+        this.#context.drawImage(image, params.x, params.y, params.width, params.height);
+
+        return this;
+    }
+
     reflectTo(image: HTMLImageElement) {
         image.height = this.height;
         image.width = this.width;
         image.src = this.canvas.toDataURL('image/png');
+
+        return this;
     }
 }

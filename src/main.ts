@@ -1,5 +1,6 @@
+import { getFlagSrc } from './flags/flagIcons';
 import { CanvasManager, ImageGenerator } from './images';
-import { querySelectorSafe } from './shared/utils';
+import { loadImage, querySelectorSafe } from './shared/utils';
 
 import './style.css';
 
@@ -9,4 +10,6 @@ const image = querySelectorSafe<HTMLImageElement>('.device-screen');
 const manager = new CanvasManager(canvas);
 const generator = new ImageGenerator(manager, image);
 
-generator.render();
+(async function main() {
+    generator.render(await loadImage(getFlagSrc('al')));
+})();
