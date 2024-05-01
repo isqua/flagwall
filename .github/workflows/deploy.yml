@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: install dependencies
+        run: npm ci
+      - name: setup pages
+        id: pages
+        uses: actions/configure-pages@v3
+      - name: build app
+        run: npm run build
+        env:
+          PUBLIC_URL: ${{ steps.pages.outputs.base_path }}
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./dist
+      - name: deploy to github pages
+        id: deployment
+        uses: actions/deploy-pages@v2
