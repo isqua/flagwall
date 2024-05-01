@@ -7,8 +7,15 @@
     <title>flagwall</title>
   </head>
   <body>
-    <aside>
-      <form action="#" class="form">
+    <button type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open settings" aria-haspopup="true" class="sidebar-control">
+      <div class="burger">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </div>
+    </button>
+    <aside id="sidebar" class="sidebar hidden">
+      <form action="#" class="sidebar-content form">
         <div>
           <ul class="countries-list">
           </ul>

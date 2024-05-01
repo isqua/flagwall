@@ -2,11 +2,17 @@ import { countries, getFlagSrc } from "./flags";
 import { CanvasManager, ImageGenerator } from "./images";
 import { CountrySelector, Settings } from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
+import { Sidebar } from "./sidebar";
 
 import "./style.css";
 
 const canvas = querySelectorSafe<HTMLCanvasElement>(".canvas");
 const image = querySelectorSafe<HTMLImageElement>(".device-screen");
+
+const sidebar = new Sidebar(
+    querySelectorSafe<HTMLElement>(".sidebar"),
+    querySelectorSafe<HTMLButtonElement>(".sidebar-control"),
+);
 
 const settingsForm = querySelectorSafe<HTMLFormElement>("form");
 const countriesList = querySelectorSafe<HTMLUListElement>(".countries-list");
@@ -21,8 +27,9 @@ const generator = new ImageGenerator(manager, image);
 (async function main() {
     const codes = window.location.hash.slice(1).split(",");
 
+    
     countrySelector.initialize(countries);
-
+    
     settings.initialize({
         countries: codes,
     });
@@ -36,6 +43,8 @@ const generator = new ImageGenerator(manager, image);
 
         generator.render(flags);
     });
+
+    sidebar.initialize();
 
     const flags = await getFullfiled(
         codes.map(code => loadImage(getFlagSrc(code)))

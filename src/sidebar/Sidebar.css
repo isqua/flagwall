@@ -1,0 +1,87 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #334155;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 0 0 0 32px;
+    z-index: 1;
+    overflow: hidden;
+    width: 450px;
+    max-width: 70vw;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-content {
+    max-height: 100%;
+    overflow: auto;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.sidebar.hidden {
+    opacity: 0.5;
+    transform: translateX(-100%);
+    user-select: none;
+    pointer-events: none;
+}
+
+.sidebar-control {
+    z-index: 10;
+    position: fixed;
+    background: none;
+    border: none;
+    padding: 20px 12px 12px;
+}
+
+.burger {
+    width: 20px;
+    height: 15px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .15s ease-in-out;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.burger-line {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.burger-line:nth-child(1) {
+    top: 0px;
+}
+
+.burger-line:nth-child(2) {
+    top: 6px;
+}
+
+.burger-line:nth-child(3) {
+    top: 12px;
+}
+
+.sidebar-control[aria-expanded=true] .burger-line:nth-child(1) {
+    top: 6px;
+    transform: rotate(135deg);
+}
+
+.sidebar-control[aria-expanded=true] .burger-line:nth-child(2) {
+    opacity: 0;
+    left: -20px;
+}
+
+.sidebar-control[aria-expanded=true] .burger-line:nth-child(3) {
+    top: 6px;
+    transform: rotate(-135deg);
+}
