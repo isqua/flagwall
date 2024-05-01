@@ -7,12 +7,33 @@
     <title>flagwall</title>
   </head>
   <body>
+    <aside>
+      <form action="#" class="form">
+        <div>
+          <ul class="countries-list">
+          </ul>
+        </div>
+      </form>
+    </aside>
     <main class="main">
       <canvas class="canvas"></canvas>
       <div class="device">
         <img alt="flag wall" class="device-screen" />
       </div>
     </main>
+    <template id="country">
+      <li class="country-item">
+        <input
+          type="checkbox"
+          name="country"
+          class="country-checkbox"
+        />
+        <label class="country-label">
+          <img class="country-flag" src="" width="24px" height="18px" />
+          <span class="country-name"></span>
+        </label>
+      </li>
+    </template>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

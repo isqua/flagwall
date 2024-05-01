@@ -1,11 +1,31 @@
-export function querySelectorSafe<T extends Element = Element>(selector: string): T {
-    const element = document.querySelector<T>(selector);
+export function querySelectorSafe<T extends Element = Element>(selector: string, root: ParentNode = document): T {
+    const element = root.querySelector<T>(selector);
 
     if (!element) {
         throw new Error(`Element not found by query ${selector}`);
     }
 
     return element;
+}
+
+export function toArrayOfStrings(data: FormDataEntryValue[]): string[] {
+    if (!data) {
+        return [];
+    }
+
+    if (!Array.isArray(data)) {
+        return typeof data === "string" ? [data] : [];
+    }
+
+    if (typeof data[0] !== "string") {
+        return [];
+    }
+
+    return data as string[];
+}
+
+export function isCheckable(element: Element): element is HTMLInputElement {
+    return element instanceof HTMLInputElement && (element.type === "checkbox" || element.type === "radio");
 }
 
 export function loadImage(src: string): Promise<HTMLImageElement> {

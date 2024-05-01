@@ -1,0 +1,35 @@
+.countries-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.country-checkbox {
+    display: none;
+}
+
+.country-item {
+    margin: 0 0 4px;
+}
+
+.country-label {
+    display: flex;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: flex;
+    line-height: 20px;
+}
+
+.country-flag {
+    margin-block-start: 1px;
+    margin-inline-end: 12px;
+    outline: 1px solid rgba(255,255,255,0.5);
+}
+
+input:checked + .country-label {
+    background-color: #94a3b8;
+}
+
+input:checked + .country-label .country-flag {
+    outline: none;
+}
