@@ -13,6 +13,11 @@
 
 .device-screen {
     display: block;
-    max-width: 80vw;
+    opacity: 0;
+    max-width: 70vw;
     max-height: 80vh;
+}
+
+.device-screen.ready {
+    opacity: 1;
 }

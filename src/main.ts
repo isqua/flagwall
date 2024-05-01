@@ -25,11 +25,12 @@ const manager = new CanvasManager(canvas);
 const generator = new ImageGenerator(manager, image);
 
 (async function main() {
+    generator.initialize();
+
     const codes = window.location.hash.slice(1).split(",");
 
-    
     countrySelector.initialize(countries);
-    
+
     settings.initialize({
         countries: codes,
     });

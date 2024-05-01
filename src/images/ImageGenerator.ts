@@ -5,6 +5,7 @@ const INITIAL_WIDTH = window.screen.width * DPI;
 const INITIAL_HEIGHT = window.screen.height * DPI;
 const INITIAL_COLOR = '#5f6a5e';
 const BORDER_COLOR = '#fff';
+const READY_CLASS_NAME = 'ready';
 
 const FLAG_HEIGHT = 30 * DPI;
 const FLAG_WIDTH = 40 * DPI;
@@ -29,6 +30,15 @@ export class ImageGenerator {
         }
 
         return rows;
+    }
+
+    initialize() {
+        this.canvas
+            .setSize(INITIAL_WIDTH, INITIAL_HEIGHT)
+            .fill(INITIAL_COLOR)
+            .reflectTo(this.image);
+
+        this.image.classList.add(READY_CLASS_NAME);
     }
 
     async render(flags: HTMLImageElement[]) {
