@@ -1,0 +1,17 @@
+.canvas {
+    display: none;
+}
+
+.device {
+    max-width: fit-content;
+    max-height: fit-content;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 2px solid #ccc;
+}
+
+.device-screen {
+    display: block;
+    max-width: 80vw;
+    max-height: 80vh;
+}
