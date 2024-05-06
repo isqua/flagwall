@@ -14,6 +14,7 @@
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .landing.hidden {
@@ -22,7 +23,7 @@
 
 .hero {
     max-width: 600px;
-    margin: auto;
+    margin: 36px auto;
 }
 
 .hero p {
@@ -56,4 +57,14 @@
     border-radius: 24px;
     background-image: linear-gradient(to top left, #f43b47 0%, #453a94 100%);
     color: #fff;
+}
+
+.demo {
+    max-width: 80%;
+    margin: 0 auto;
+    flex-basis: content;
+}
+
+.demo-pic {
+    max-width: 100%;
 }
