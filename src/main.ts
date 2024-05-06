@@ -4,8 +4,11 @@ import { Landing } from "./landing";
 import { CountrySelector, Settings } from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
 import { Sidebar } from "./sidebar";
+import { StateManager } from "./state";
 
 import "./style.css";
+
+const state = new StateManager();
 
 const landing = new Landing(
     querySelectorSafe<HTMLElement>(".landing"),
@@ -26,34 +29,30 @@ const settings = new Settings(querySelectorSafe<HTMLFormElement>("form"));
 const manager = new CanvasManager(querySelectorSafe<HTMLCanvasElement>(".canvas"));
 const generator = new ImageGenerator(manager, querySelectorSafe<HTMLImageElement>(".device-screen"));
 
-async function main() {
-    generator.initialize();
-
-    const codes = window.location.hash.slice(1).split(",");
-
-    countrySelector.initialize(countries);
-
-    settings.initialize({
-        countries: codes,
-    });
-
-    settings.onChange(async ({ countries }) => {
-        window.location.hash = countries.join(',');
-
-        const flags = await getFullfiled(
-            countries.map(code => loadImage(getFlagSrc(code)))
-        );
-
-        generator.render(flags);
-    });
-
-    sidebar.initialize();
-
+async function draw(codes: string[]) {
     const flags = await getFullfiled(
         codes.map(code => loadImage(getFlagSrc(code)))
     );
 
     generator.render(flags);
+}
+
+function main() {
+    const codes = state.getCodes();
+
+    countrySelector.initialize(countries);
+    settings.initialize({ countries: codes });
+    generator.initialize();
+    draw(codes);
+
+    settings.onChange(({ countries }) => {
+        state.writeCodes(countries);
+
+        return draw(countries);
+    });
+
+    sidebar.initialize();
+    setTimeout(() => sidebar.toggle(true), 500);
 }
 
 landing.initialize(() => {

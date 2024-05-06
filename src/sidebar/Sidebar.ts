@@ -14,7 +14,7 @@ export class Sidebar {
             this.toggle(!this.isOpen());
         });
 
-        document.addEventListener('click', (event) => {
+        document.addEventListener("click", (event) => {
             const target = event.target as HTMLElement;
             const clickedInsideMenu = this.sidebar.contains(target);
             const clickedOnMenuButton = target === this.control || this.control.contains(target);
@@ -23,8 +23,6 @@ export class Sidebar {
                 this.toggle(false);
             }
         });
-
-        this.toggle(true);
     }
 
     isOpen() {
