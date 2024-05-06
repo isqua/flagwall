@@ -12,23 +12,19 @@ const landing = new Landing(
     querySelectorSafe<HTMLElement>(".app"),
 );
 
-const canvas = querySelectorSafe<HTMLCanvasElement>(".canvas");
-const image = querySelectorSafe<HTMLImageElement>(".device-screen");
-
 const sidebar = new Sidebar(
     querySelectorSafe<HTMLElement>(".sidebar"),
     querySelectorSafe<HTMLButtonElement>(".sidebar-control"),
 );
 
-const settingsForm = querySelectorSafe<HTMLFormElement>("form");
-const countriesList = querySelectorSafe<HTMLUListElement>(".countries-list");
-const countryTemplate = querySelectorSafe<HTMLTemplateElement>("#country");
+const countrySelector = new CountrySelector(
+    querySelectorSafe<HTMLUListElement>(".countries-list"),
+    querySelectorSafe<HTMLTemplateElement>("#country"),
+);
 
-const countrySelector = new CountrySelector(countriesList, countryTemplate);
-const settings = new Settings(settingsForm);
-
-const manager = new CanvasManager(canvas);
-const generator = new ImageGenerator(manager, image);
+const settings = new Settings(querySelectorSafe<HTMLFormElement>("form"));
+const manager = new CanvasManager(querySelectorSafe<HTMLCanvasElement>(".canvas"));
+const generator = new ImageGenerator(manager, querySelectorSafe<HTMLImageElement>(".device-screen"));
 
 async function main() {
     generator.initialize();
