@@ -1,10 +1,16 @@
 import { countries, getFlagSrc } from "./flags";
 import { CanvasManager, ImageGenerator } from "./images";
+import { Landing } from "./landing";
 import { CountrySelector, Settings } from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
 import { Sidebar } from "./sidebar";
 
 import "./style.css";
+
+const landing = new Landing(
+    querySelectorSafe<HTMLElement>(".landing"),
+    querySelectorSafe<HTMLElement>(".app"),
+);
 
 const canvas = querySelectorSafe<HTMLCanvasElement>(".canvas");
 const image = querySelectorSafe<HTMLImageElement>(".device-screen");
@@ -24,7 +30,7 @@ const settings = new Settings(settingsForm);
 const manager = new CanvasManager(canvas);
 const generator = new ImageGenerator(manager, image);
 
-(async function main() {
+async function main() {
     generator.initialize();
 
     const codes = window.location.hash.slice(1).split(",");
@@ -52,4 +58,8 @@ const generator = new ImageGenerator(manager, image);
     );
 
     generator.render(flags);
-})();
+}
+
+landing.initialize(() => {
+    main();
+});

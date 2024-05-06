@@ -7,25 +7,35 @@
     <title>flagwall</title>
   </head>
   <body>
-    <button type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open settings" aria-haspopup="true" class="sidebar-control">
-      <div class="burger">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </div>
-    </button>
-    <aside id="sidebar" class="sidebar hidden">
-      <form action="#" class="sidebar-content form">
-        <div>
-          <ul class="countries-list">
-          </ul>
-        </div>
-      </form>
-    </aside>
+    <main class="landing">
+      <header class="hero">
+        <h1 class="hero-title">Showcase your journey</h1>
+        <p>Pick the countries you’ve visited and seamlessly create your personalized wallpaper.</p>
+        <p>Download your customized wallpapers and share them with friends and family to showcase your unique travel achievements.</p>
+        <button type="button" class="start to-app">Start crafting</button>
+      </header>
+    </main>
     <div class="app">
-      <canvas class="canvas"></canvas>
-      <div class="device">
-        <img alt="flag wall" class="device-screen" />
+      <button type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open settings" aria-haspopup="true" class="sidebar-control">
+        <div class="burger">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </div>
+      </button>
+      <aside id="sidebar" class="sidebar hidden">
+        <form action="#" class="sidebar-content form">
+          <div>
+            <ul class="countries-list">
+            </ul>
+          </div>
+        </form>
+      </aside>
+      <div class="workbench">
+        <canvas class="canvas"></canvas>
+        <div class="device">
+          <img alt="flag wall" class="device-screen" />
+        </div>
       </div>
     </div>
     <template id="country">
