@@ -1,3 +1,5 @@
+import { TabsAutomatic } from './Tabs';
+
 import './Sidebar.css';
 
 const CLOSED_MENU_CLASS = 'hidden';
@@ -7,7 +9,9 @@ export class Sidebar {
     constructor(
         private sidebar: HTMLElement,
         private control: HTMLButtonElement,
-    ) { }
+    ) {
+        new TabsAutomatic(this.sidebar);
+    }
 
     initialize() {
         this.control.addEventListener("click", () => {
