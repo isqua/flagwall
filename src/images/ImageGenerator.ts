@@ -11,6 +11,11 @@ const FLAG_HEIGHT = 30 * DPI;
 const FLAG_WIDTH = 40 * DPI;
 const FLAG_GAP = 8 * DPI;
 
+export type RenderParams = {
+    flags: HTMLImageElement[];
+    background: string;
+}
+
 export class ImageGenerator {
     constructor(
         private canvas: CanvasManager,
@@ -41,10 +46,10 @@ export class ImageGenerator {
         this.image.classList.add(READY_CLASS_NAME);
     }
 
-    async render(flags: HTMLImageElement[]) {
+    async render({ flags, background }: RenderParams) {
         this.canvas
             .setSize(INITIAL_WIDTH, INITIAL_HEIGHT)
-            .fill(INITIAL_COLOR);
+            .fill(background);
 
         const centerX = this.canvas.width / 2;
         const centerY = this.canvas.height / 2;

@@ -1,0 +1,38 @@
+.colors-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.color-radio {
+    display: none;
+}
+
+.color-item {
+    margin: 0 0 4px;
+}
+
+.color-label {
+    display: flex;
+    padding: 6px 8px;
+    border-radius: 6px;
+    display: flex;
+    line-height: 20px;
+}
+
+.color-flag {
+    display: inline-block;
+    width: 24px;
+    height: 18px;
+    margin-block-start: 1px;
+    margin-inline-end: 12px;
+    outline: 1px solid rgba(255,255,255,0.5);
+}
+
+input:checked + .color-label {
+    background-color: #94a3b8;
+}
+
+input:checked + .color-label .color-flag {
+    outline: none;
+}

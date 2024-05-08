@@ -8,6 +8,14 @@ export function querySelectorSafe<T extends Element = Element>(selector: string,
     return element;
 }
 
+export function toString(data: FormDataEntryValue | null): string {
+    if (typeof data !== "string") {
+        return "";
+    }
+
+    return data;
+}
+
 export function toArrayOfStrings(data: FormDataEntryValue[]): string[] {
     if (!data) {
         return [];

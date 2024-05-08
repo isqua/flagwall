@@ -1,7 +1,8 @@
-import { isCheckable, toArrayOfStrings } from "../shared/utils";
+import { isCheckable, toArrayOfStrings, toString } from "../shared/utils";
 
-type SettingsData = {
+export type SettingsData = {
     countries: string[];
+    background: string;
 }
 
 type SettingsListener = (data: SettingsData) => void;
@@ -23,6 +24,12 @@ export class Settings {
                 }
             }
         }
+
+        const firstBackgroundColor = this.form.querySelector("input[name=background]");
+
+        if (firstBackgroundColor && isCheckable(firstBackgroundColor)) {
+            firstBackgroundColor.checked = true;
+        }
     }
 
     onChange(callback: SettingsListener) {
@@ -34,9 +41,11 @@ export class Settings {
     getData(): SettingsData {
         const data = new FormData(this.form);
         const countries = toArrayOfStrings(data.getAll("country"));
+        const background = toString(data.get("background"));
 
         return {
-            countries: countries,
+            countries,
+            background,
         };
     }
 }

@@ -1,2 +1,3 @@
+export { ColorSelector } from "./ColorSelector";
 export { CountrySelector } from "./CountrySelector";
-export { Settings } from "./Settings";
+export { Settings, type SettingsData } from "./Settings";
