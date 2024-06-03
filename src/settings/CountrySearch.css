@@ -1,0 +1,13 @@
+.countries-search-container {
+    margin-bottom: 1rem;
+}
+
+.countries-search-container input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+}

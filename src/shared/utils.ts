@@ -58,3 +58,15 @@ export async function getFullfiled<T>(promises: Promise<T>[]): Promise<T[]> {
         return acc;
     }, []);
 }
+
+export function makeDebounce() {
+    let timeout: number = 0;
+
+    return function (callback: () => void, delay: number) {
+        clearTimeout(timeout);
+
+        timeout = window.setTimeout(() => {
+            callback();
+        }, delay);
+    };
+}

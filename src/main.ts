@@ -1,7 +1,7 @@
 import { countries, getFlagSrc } from "./flags";
 import { CanvasManager, ImageGenerator } from "./images";
 import { Landing } from "./landing";
-import { ColorSelector, CountrySelector, Settings } from "./settings";
+import { ColorSelector, CountrySelector, Settings, CountrySearch } from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
 import { Sidebar } from "./sidebar";
 import { StateManager } from "./state";
@@ -22,9 +22,14 @@ const sidebar = new Sidebar(
     querySelectorSafe<HTMLButtonElement>(".sidebar-control"),
 );
 
+const countrySearch = new CountrySearch(
+    querySelectorSafe<HTMLInputElement>("#countries-search"),
+);
+
 const countrySelector = new CountrySelector(
     querySelectorSafe<HTMLUListElement>(".countries-list"),
     querySelectorSafe<HTMLTemplateElement>("#country"),
+    () => state.getCodes(),
 );
 
 const colorSelector = new ColorSelector(
@@ -52,6 +57,10 @@ function main() {
     settings.initialize({ countries: codes });
     generator.initialize();
     draw(settings.getData());
+
+    countrySearch.onChange(value => {
+        countrySelector.filter(value)
+    });
 
     settings.onChange(data => {
         state.writeCodes(data.countries);
