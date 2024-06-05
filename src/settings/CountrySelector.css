@@ -6,6 +6,7 @@
 
 .country-item {
     margin: 0 0 4px;
+    position: relative;
 }
 
 .country-item.country-hidden {
