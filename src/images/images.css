@@ -14,8 +14,10 @@
 .device-screen {
     display: block;
     opacity: 0;
-    max-width: 70vw;
+    max-width: calc(100vw - 90px);
     max-height: 80vh;
+    width: auto;
+    height: auto;
 }
 
 .device-screen.ready {
