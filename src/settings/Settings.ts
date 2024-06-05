@@ -36,6 +36,11 @@ export class Settings {
         this.form.addEventListener("change", () => {
             callback(this.getData());
         });
+
+        this.form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            callback(this.getData());
+        });
     }
 
     getData(): SettingsData {

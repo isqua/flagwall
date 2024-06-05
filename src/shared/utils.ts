@@ -58,3 +58,27 @@ export async function getFullfiled<T>(promises: Promise<T>[]): Promise<T[]> {
         return acc;
     }, []);
 }
+
+interface debounceCallback<TArgs extends unknown[]> {
+    (...args: TArgs): void;
+}
+
+export function debounce<TArgs extends unknown[]>(
+    callback: debounceCallback<TArgs>,
+    delayInMs: number,
+): debounceCallback<TArgs> {
+    let timer: number;
+
+    const debouncedFunc: debounceCallback<TArgs> = (...args) => {
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        timer = window.setTimeout(
+            () => callback(...args),
+            delayInMs,
+        );
+    };
+
+    return debouncedFunc;
+}

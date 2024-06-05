@@ -5,6 +5,8 @@ import type { Country } from "flag-icons";
 
 import "./CountrySelector.css";
 
+const HIDDEN_CLS = "country-hidden";
+
 export class CountrySelector {
     constructor(
         private container: HTMLElement,
@@ -15,6 +17,7 @@ export class CountrySelector {
         countries.forEach(country => {
             const clone = this.template.content.cloneNode(true) as HTMLLIElement;
 
+            clone.children[0].setAttribute("data-code", country.code);
             querySelectorSafe<HTMLInputElement>("input", clone).value = country.code;
             querySelectorSafe<HTMLInputElement>("input", clone).id = country.code;
             querySelectorSafe<HTMLLabelElement>("label", clone).setAttribute("for", country.code);
@@ -23,5 +26,15 @@ export class CountrySelector {
 
             this.container.appendChild(clone);
         });
+    }
+
+    setVisibleCountries(codes: Set<string>) {
+        const countries = this.container.querySelectorAll<HTMLElement>("[data-code]");
+
+        for (let country of countries) {
+            const code = country.dataset.code!;
+
+            country.classList.toggle(HIDDEN_CLS, !codes.has(code));
+        }
     }
 }
