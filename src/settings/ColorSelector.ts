@@ -13,6 +13,10 @@ const colors: Color[] = [
         code: "#5f6a5e",
     },
     {
+        name: "Sage",
+        code: "#8B9467",
+    },
+    {
         name: "Stone",
         code: "#a8a29e",
     },
@@ -27,6 +31,18 @@ const colors: Color[] = [
     {
         name: "Rose",
         code: "#ecc5c0",
+    },
+    {
+        name: "Lavender",
+        code: "#C7B8EA",
+    },
+    {
+        name: "Havelock Blue",
+        code: "#5C6BC0",
+    },
+    {
+        name: "Burgundy",
+        code: "#8B0A1A",
     },
 ];
 
