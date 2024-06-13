@@ -13,7 +13,10 @@ export class Landing {
     ) {}
 
     initialize(callback: CloseLandingCallback) {
-        const button = querySelectorSafe<HTMLButtonElement>("button", this.landing);
+        const button = querySelectorSafe<HTMLButtonElement>(
+            "button",
+            this.landing,
+        );
 
         button.addEventListener("click", () => this.close(callback));
     }

@@ -1,7 +1,12 @@
 import { countries, getFlagSrc } from "./flags";
 import { CanvasManager, ImageGenerator } from "./images";
 import { Landing } from "./landing";
-import { ColorSelector,  CountrySearch, CountrySelector, Settings } from "./settings";
+import {
+    ColorSelector,
+    CountrySearch,
+    CountrySelector,
+    Settings,
+} from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
 import { Sidebar } from "./sidebar";
 import { StateManager } from "./state";
@@ -38,12 +43,17 @@ const colorSelector = new ColorSelector(
 );
 
 const settings = new Settings(querySelectorSafe<HTMLFormElement>("form"));
-const manager = new CanvasManager(querySelectorSafe<HTMLCanvasElement>(".canvas"));
-const generator = new ImageGenerator(manager, querySelectorSafe<HTMLImageElement>(".device-screen"));
+const manager = new CanvasManager(
+    querySelectorSafe<HTMLCanvasElement>(".canvas"),
+);
+const generator = new ImageGenerator(
+    manager,
+    querySelectorSafe<HTMLImageElement>(".device-screen"),
+);
 
 async function draw({ countries, background }: SettingsData) {
     const flags = await getFullfiled(
-        countries.map(code => loadImage(getFlagSrc(code)))
+        countries.map((code) => loadImage(getFlagSrc(code))),
     );
 
     generator.render({ flags, background });
@@ -58,13 +68,13 @@ function main() {
     generator.initialize();
     draw(settings.getData());
 
-    settings.onChange(data => {
+    settings.onChange((data) => {
         state.writeCodes(data.countries);
 
         return draw(data);
     });
 
-    countrySearch.onChange(visibleCountries => {
+    countrySearch.onChange((visibleCountries) => {
         countrySelector.setVisibleCountries(visibleCountries);
     });
 

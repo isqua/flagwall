@@ -4,14 +4,16 @@
     left: 0;
     bottom: 0;
     background-color: #334155;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 0;
     z-index: 1;
     overflow: hidden;
     width: 450px;
     max-width: 70vw;
     display: flex;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 }
 
 .sidebar.hidden {
@@ -32,7 +34,7 @@
 .sidebar-tab {
     border: 0;
     background-color: transparent;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
     padding: 4px 10px 5px;
     cursor: pointer;
 }
@@ -62,7 +64,7 @@
     height: 15px;
     position: relative;
     transform: rotate(0deg);
-    transition: .15s ease-in-out;
+    transition: 0.15s ease-in-out;
     cursor: pointer;
     background: none;
     border: none;
@@ -78,7 +80,7 @@
     opacity: 1;
     left: 0;
     transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    transition: 0.25s ease-in-out;
 }
 
 .burger-line:nth-child(1) {
@@ -93,17 +95,17 @@
     top: 12px;
 }
 
-.sidebar-control[aria-expanded=true] .burger-line:nth-child(1) {
+.sidebar-control[aria-expanded="true"] .burger-line:nth-child(1) {
     top: 6px;
     transform: rotate(135deg);
 }
 
-.sidebar-control[aria-expanded=true] .burger-line:nth-child(2) {
+.sidebar-control[aria-expanded="true"] .burger-line:nth-child(2) {
     opacity: 0;
     left: -20px;
 }
 
-.sidebar-control[aria-expanded=true] .burger-line:nth-child(3) {
+.sidebar-control[aria-expanded="true"] .burger-line:nth-child(3) {
     top: 6px;
     transform: rotate(-135deg);
 }

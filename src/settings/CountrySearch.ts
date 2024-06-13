@@ -10,7 +10,7 @@ export class CountrySearch {
     constructor(
         private input: HTMLInputElement,
         private countries: Country[],
-    ) { }
+    ) {}
 
     #filterCountries(text: string): Set<string> {
         const filteredCountries = new Set<string>();
@@ -26,7 +26,9 @@ export class CountrySearch {
 
     onChange(callback: (codes: Set<string>) => void) {
         const debouncedCallback = debounce(() => {
-            const filteredCountries = this.#filterCountries(this.input.value.trim());
+            const filteredCountries = this.#filterCountries(
+                this.input.value.trim(),
+            );
 
             callback(filteredCountries);
         }, INPUT_DELAY_IN_MS);

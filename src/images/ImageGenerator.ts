@@ -3,9 +3,9 @@ import type { CanvasManager } from "./CanvasManager";
 const DPI = window.devicePixelRatio || 1;
 const INITIAL_WIDTH = window.screen.width * DPI;
 const INITIAL_HEIGHT = window.screen.height * DPI;
-const INITIAL_COLOR = '#5f6a5e';
-const BORDER_COLOR = '#fff';
-const READY_CLASS_NAME = 'ready';
+const INITIAL_COLOR = "#5f6a5e";
+const BORDER_COLOR = "#fff";
+const READY_CLASS_NAME = "ready";
 
 const FLAG_HEIGHT = 30 * DPI;
 const FLAG_WIDTH = 40 * DPI;
@@ -14,18 +14,20 @@ const FLAG_GAP = 8 * DPI;
 export type RenderParams = {
     flags: HTMLImageElement[];
     background: string;
-}
+};
 
 export class ImageGenerator {
     constructor(
         private canvas: CanvasManager,
         private image: HTMLImageElement,
-    ) { }
+    ) {}
 
     #splitFlagsByRows(flags: HTMLImageElement[]): HTMLImageElement[][] {
         const maxFlags = Math.max(
             1,
-            Math.floor((this.canvas.width - FLAG_GAP * 2) / (FLAG_GAP + FLAG_WIDTH)),
+            Math.floor(
+                (this.canvas.width - FLAG_GAP * 2) / (FLAG_GAP + FLAG_WIDTH),
+            ),
         );
 
         const rows: HTMLImageElement[][] = [];
@@ -47,9 +49,7 @@ export class ImageGenerator {
     }
 
     async render({ flags, background }: RenderParams) {
-        this.canvas
-            .setSize(INITIAL_WIDTH, INITIAL_HEIGHT)
-            .fill(background);
+        this.canvas.setSize(INITIAL_WIDTH, INITIAL_HEIGHT).fill(background);
 
         const centerX = this.canvas.width / 2;
         const centerY = this.canvas.height / 2;
@@ -66,7 +66,8 @@ export class ImageGenerator {
         }
 
         for (const row of rows) {
-            let x = centerX - (row.length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
+            let x =
+                centerX - (row.length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
 
             for (const flag of row) {
                 this.canvas.drawImage(flag, {
@@ -81,7 +82,9 @@ export class ImageGenerator {
                 x += FLAG_WIDTH + FLAG_GAP;
             }
 
-            x = centerX - (rows[0].length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
+            x =
+                centerX -
+                (rows[0].length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
             y += FLAG_HEIGHT + FLAG_GAP;
         }
 

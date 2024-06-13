@@ -1,4 +1,4 @@
-export { CanvasManager } from './CanvasManager';
-export { ImageGenerator } from './ImageGenerator';
+export { CanvasManager } from "./CanvasManager";
+export { ImageGenerator } from "./ImageGenerator";
 
-import './images.css';
+import "./images.css";

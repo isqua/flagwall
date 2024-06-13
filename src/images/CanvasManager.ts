@@ -3,15 +3,17 @@ type ImageParams = {
     y: number;
     width: number;
     height: number;
-}
+};
 
 type BorderedImageParams = ImageParams & {
     borderWidth: number;
     borderColor: string;
-}
+};
 
-function isBordered(params: ImageParams | BorderedImageParams): params is BorderedImageParams {
-    return 'borderWidth' in params;
+function isBordered(
+    params: ImageParams | BorderedImageParams,
+): params is BorderedImageParams {
+    return "borderWidth" in params;
 }
 
 export class CanvasManager {
@@ -21,7 +23,7 @@ export class CanvasManager {
         const ctx = canvas.getContext("2d");
 
         if (!ctx) {
-            throw new Error('Canvas has no 2D context');
+            throw new Error("Canvas has no 2D context");
         }
 
         this.#context = ctx;
@@ -53,7 +55,10 @@ export class CanvasManager {
         return this;
     }
 
-    drawImage(image: HTMLImageElement, params: (ImageParams | BorderedImageParams)) {
+    drawImage(
+        image: HTMLImageElement,
+        params: ImageParams | BorderedImageParams,
+    ) {
         if (isBordered(params)) {
             this.#context.fillStyle = params.borderColor;
 
@@ -65,7 +70,13 @@ export class CanvasManager {
             );
         }
 
-        this.#context.drawImage(image, params.x, params.y, params.width, params.height);
+        this.#context.drawImage(
+            image,
+            params.x,
+            params.y,
+            params.width,
+            params.height,
+        );
 
         return this;
     }
@@ -73,7 +84,7 @@ export class CanvasManager {
     reflectTo(image: HTMLImageElement) {
         image.height = this.height;
         image.width = this.width;
-        image.src = this.canvas.toDataURL('image/png');
+        image.src = this.canvas.toDataURL("image/png");
 
         return this;
     }

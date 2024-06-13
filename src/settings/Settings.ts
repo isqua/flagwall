@@ -3,14 +3,12 @@ import { isCheckable, toArrayOfStrings, toString } from "../shared/utils";
 export type SettingsData = {
     countries: string[];
     background: string;
-}
+};
 
 type SettingsListener = (data: SettingsData) => void;
 
 export class Settings {
-    constructor(
-        private form: HTMLFormElement,
-    ) { }
+    constructor(private form: HTMLFormElement) {}
 
     initialize(data: Partial<SettingsData>) {
         const countries = new Set(data.countries ?? []);
@@ -25,7 +23,9 @@ export class Settings {
             }
         }
 
-        const firstBackgroundColor = this.form.querySelector("input[name=background]");
+        const firstBackgroundColor = this.form.querySelector(
+            "input[name=background]",
+        );
 
         if (firstBackgroundColor && isCheckable(firstBackgroundColor)) {
             firstBackgroundColor.checked = true;

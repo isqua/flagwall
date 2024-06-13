@@ -12,8 +12,11 @@ export function isTextMatch(value: string, search: string) {
     let valuePointer = 0;
     let searchPointer = 0;
 
-    while (valuePointer < normalizedValue.length && searchPointer < normalizedSearch.length) {
-        if (normalizedSearch[searchPointer] === ' ') {
+    while (
+        valuePointer < normalizedValue.length &&
+        searchPointer < normalizedSearch.length
+    ) {
+        if (normalizedSearch[searchPointer] === " ") {
             searchPointer++;
             continue;
         }

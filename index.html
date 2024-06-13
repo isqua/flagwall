@@ -1,147 +1,318 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>flagwall</title>
-  </head>
-  <body>
-    <main class="landing">
-      <header class="hero">
-        <h1 class="hero-title">Showcase your journey</h1>
-        <p>Pick the countries you’ve visited and seamlessly create your personalized wallpaper.</p>
-        <p>Download your customized wallpapers and share them with friends and family to showcase your unique travel achievements.</p>
-      </header>
-      <div class="demo">
-        <svg class="demo-pic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1419 2796" width="320">
-          <image xlink:href="./background.png" x="100" y="100" width="1219" height="2596" clip-path="url(#clip)" />
-          <image xlink:href="./phone.png" x="0" y="0" width="1419" height="2796"/>
-          <text x="709" y="800" text-anchor="middle" fill="#fff" font-size="360" font-family="inherit" font-weight="bold">
-            09:41
-          </text>
-          <defs>
-            <rect id="rect" x="100" y="100" width="1219" height="2596" rx="120" ry="120" />
-            <clipPath id="clip">
-              <use xlink:href="#rect"/>
-            </clipPath>
-          </defs>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>flagwall</title>
+    </head>
+    <body>
+        <main class="landing">
+            <header class="hero">
+                <h1 class="hero-title">Showcase your journey</h1>
+                <p>
+                    Pick the countries you’ve visited and seamlessly create your
+                    personalized wallpaper.
+                </p>
+                <p>
+                    Download your customized wallpapers and share them with
+                    friends and family to showcase your unique travel
+                    achievements.
+                </p>
+            </header>
+            <div class="demo">
+                <svg
+                    class="demo-pic"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1419 2796"
+                    width="320"
+                >
+                    <image
+                        xlink:href="./background.png"
+                        x="100"
+                        y="100"
+                        width="1219"
+                        height="2596"
+                        clip-path="url(#clip)"
+                    />
+                    <image
+                        xlink:href="./phone.png"
+                        x="0"
+                        y="0"
+                        width="1419"
+                        height="2796"
+                    />
+                    <text
+                        x="709"
+                        y="800"
+                        text-anchor="middle"
+                        fill="#fff"
+                        font-size="360"
+                        font-family="inherit"
+                        font-weight="bold"
+                    >
+                        09:41
+                    </text>
+                    <defs>
+                        <rect
+                            id="rect"
+                            x="100"
+                            y="100"
+                            width="1219"
+                            height="2596"
+                            rx="120"
+                            ry="120"
+                        />
+                        <clipPath id="clip">
+                            <use xlink:href="#rect" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <button type="button" class="start to-app">Start crafting</button>
+        </main>
+        <div class="app">
+            <button
+                type="button"
+                aria-controls="sidebar"
+                aria-expanded="false"
+                aria-label="Open settings"
+                aria-haspopup="true"
+                class="sidebar-control"
+            >
+                <div class="burger">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </div>
+            </button>
+            <aside id="sidebar" class="sidebar hidden">
+                <div role="tablist" class="sidebar-tablist">
+                    <button
+                        class="sidebar-tab"
+                        id="countries-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="countries"
+                    >
+                        <svg
+                            class="sidebar-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <use xlink:href="#countries-icon" />
+                        </svg>
+                    </button>
+                    <button
+                        class="sidebar-tab"
+                        id="theme-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="theme"
+                        tabindex="-1"
+                    >
+                        <svg
+                            class="sidebar-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <use xlink:href="#theme-icon" />
+                        </svg>
+                    </button>
+                    <button
+                        class="sidebar-tab"
+                        id="help-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="help"
+                        tabindex="-1"
+                    >
+                        <svg
+                            class="help-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <use xlink:href="#help-icon" />
+                        </svg>
+                    </button>
+                </div>
+                <form action="#" class="sidebar-content form">
+                    <div
+                        id="countries"
+                        role="tabpanel"
+                        tabindex="0"
+                        aria-labelledby="countries-tab"
+                        class="sidebar-tabpanel"
+                    >
+                        <input
+                            type="search"
+                            id="countries-search"
+                            name="countries-search"
+                            class="countries-search"
+                            placeholder="Type to filter"
+                        />
+                        <ul class="countries-list"></ul>
+                    </div>
+                    <div
+                        id="theme"
+                        role="tabpanel"
+                        tabindex="0"
+                        aria-labelledby="theme-tab"
+                        class="sidebar-tabpanel sidebar-tabpanel-hidden"
+                    >
+                        <ul class="colors-list"></ul>
+                    </div>
+                    <div
+                        id="help"
+                        role="tabpanel"
+                        tabindex="0"
+                        aria-labelledby="help-tab"
+                        class="sidebar-tabpanel sidebar-tabpanel-hidden"
+                    >
+                        <dl class="faq">
+                            <dt class="faq-question">
+                                How to download the image on a smartphone?
+                            </dt>
+                            <dd class="faq-answer">
+                                Tap and hold on the image for a second or two
+                                until a menu appears, then select "Download
+                                image" or "Save image".
+                            </dd>
+
+                            <dt class="faq-question">
+                                What to do with the downloaded image?
+                            </dt>
+                            <dd class="faq-answer">
+                                We made this app to set the wallpaper for a
+                                phone lock screen, but you can use the image as
+                                you want.
+                            </dd>
+
+                            <dt class="faq-question">
+                                What is the resolution of the picture?
+                            </dt>
+                            <dd class="faq-answer">
+                                The same as your device screen.
+                            </dd>
+
+                            <dt class="faq-question">
+                                How to share my flag set with my friends?
+                            </dt>
+                            <dd class="faq-answer">
+                                Just share the address of the current page as
+                                you usually share with friends. When you add a
+                                country, we update the page address.
+                            </dd>
+
+                            <dt class="faq-question">Who made this app?</dt>
+                            <dd class="faq-answer">
+                                It's me, Alex, with the help of
+                                <a
+                                    target="_blank"
+                                    href="https://github.com/isqua/flagwall/graphs/contributors"
+                                    >contributors</a
+                                >. Check out my other
+                                <a
+                                    target="_blank"
+                                    href="https://isqua.github.io"
+                                    >projects</a
+                                >
+                                and my
+                                <a
+                                    target="_blank"
+                                    href="https://isqua.ru/en/blog/"
+                                    >blog</a
+                                >.
+                            </dd>
+                        </dl>
+                    </div>
+                </form>
+            </aside>
+            <div class="workbench">
+                <canvas class="canvas"></canvas>
+                <div class="device">
+                    <img alt="flag wall" class="device-screen" />
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="footer-inner">
+                    <p>Get $3 off your first travel eSIM</p>
+                    <p>
+                        Use code <b>ALEXEY2076</b> when you sign up or apply it
+                        at checkout.
+                        <a target="_blank" href="https://ref.airalo.com/Qjg3"
+                            >https://ref.airalo.com/Qjg3</a
+                        >
+                    </p>
+                </div>
+            </footer>
+        </div>
+        <template id="country">
+            <li class="country-item">
+                <input
+                    type="checkbox"
+                    name="country"
+                    class="country-checkbox visually-hidden"
+                />
+                <label class="country-label">
+                    <img
+                        class="country-flag"
+                        src=""
+                        width="24px"
+                        height="18px"
+                    />
+                    <span class="country-name"></span>
+                </label>
+            </li>
+        </template>
+        <template id="color">
+            <li class="color-item">
+                <input
+                    type="radio"
+                    name="background"
+                    class="color-radio visually-hidden"
+                />
+                <label class="color-label">
+                    <span class="color-flag"></span>
+                    <span class="color-name"></span>
+                </label>
+            </li>
+        </template>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+            <symbol id="countries-icon" viewBox="0 0 24 24">
+                <path
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                />
+            </symbol>
+            <symbol id="theme-icon" viewBox="0 0 24 24">
+                <path
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"
+                />
+            </symbol>
+            <symbol id="help-icon" viewBox="0 0 24 24">
+                <path
+                    fill="none"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+                />
+            </symbol>
         </svg>
-      </div>
-      <button type="button" class="start to-app">Start crafting</button>
-    </main>
-    <div class="app">
-      <button type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open settings" aria-haspopup="true" class="sidebar-control">
-        <div class="burger">
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-        </div>
-      </button>
-      <aside id="sidebar" class="sidebar hidden">
-        <div role="tablist" class="sidebar-tablist">
-          <button class="sidebar-tab" id="countries-tab" type="button" role="tab" aria-selected="true" aria-controls="countries">
-            <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <use xlink:href="#countries-icon" />
-            </svg>
-          </button>
-          <button class="sidebar-tab" id="theme-tab" type="button" role="tab" aria-selected="false" aria-controls="theme" tabindex="-1">
-            <svg class="sidebar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <use xlink:href="#theme-icon" />
-            </svg>
-          </button>
-          <button class="sidebar-tab" id="help-tab" type="button" role="tab" aria-selected="false" aria-controls="help" tabindex="-1">
-            <svg class="help-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <use xlink:href="#help-icon" />
-            </svg>
-          </button>
-        </div>
-        <form action="#" class="sidebar-content form">
-          <div id="countries" role="tabpanel" tabindex="0" aria-labelledby="countries-tab" class="sidebar-tabpanel">
-            <input
-              type="search"
-              id="countries-search"
-              name="countries-search"
-              class="countries-search"
-              placeholder="Type to filter"
-            />
-            <ul class="countries-list">
-            </ul>
-          </div>
-          <div id="theme" role="tabpanel" tabindex="0" aria-labelledby="theme-tab" class="sidebar-tabpanel sidebar-tabpanel-hidden">
-            <ul class="colors-list">
-            </ul>
-          </div>
-          <div id="help" role="tabpanel" tabindex="0" aria-labelledby="help-tab" class="sidebar-tabpanel sidebar-tabpanel-hidden">
-            <dl class="faq">
-              <dt class="faq-question">How to download the image on a smartphone?</dt>
-              <dd class="faq-answer">Tap and hold on the image for a second or two until a menu appears, then select "Download image" or "Save image".</dd>
-
-              <dt class="faq-question">What to do with the downloaded image?</dt>
-              <dd class="faq-answer">We made this app to set the wallpaper for a phone lock screen, but you can use the image as you want.</dd>
-
-              <dt class="faq-question">What is the resolution of the picture?</dt>
-              <dd class="faq-answer">The same as your device screen.</dd>
-
-              <dt class="faq-question">How to share my flag set with my friends?</dt>
-              <dd class="faq-answer">Just share the address of the current page as you usually share with friends. When you add a country, we update the page address.</dd>
-
-              <dt class="faq-question">Who made this app?</dt>
-              <dd class="faq-answer">It's me, Alex, with the help of <a target="_blank" href="https://github.com/isqua/flagwall/graphs/contributors">contributors</a>. Check out my other <a target="_blank" href="https://isqua.github.io">projects</a> and my <a target="_blank" href="https://isqua.ru/en/blog/">blog</a>.</dd>
-            </dl>
-          </div>
-        </form>
-      </aside>
-      <div class="workbench">
-        <canvas class="canvas"></canvas>
-        <div class="device">
-          <img alt="flag wall" class="device-screen" />
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="footer-inner">
-          <p>Get $3 off your first travel eSIM</p>
-          <p>Use code <b>ALEXEY2076</b> when you sign up or apply it at checkout. <a target="_blank" href="https://ref.airalo.com/Qjg3">https://ref.airalo.com/Qjg3</a></p>
-        </div>
-      </footer>
-    </div>
-    <template id="country">
-      <li class="country-item">
-        <input
-          type="checkbox"
-          name="country"
-          class="country-checkbox visually-hidden"
-        />
-        <label class="country-label">
-          <img class="country-flag" src="" width="24px" height="18px" />
-          <span class="country-name"></span>
-        </label>
-      </li>
-    </template>
-    <template id="color">
-      <li class="color-item">
-        <input
-          type="radio"
-          name="background"
-          class="color-radio visually-hidden"
-        />
-        <label class="color-label">
-          <span class="color-flag"></span>
-          <span class="color-name"></span>
-        </label>
-      </li>
-    </template>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="countries-icon" viewBox="0 0 24 24">
-        <path fill="none" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-      </symbol>
-      <symbol id="theme-icon" viewBox="0 0 24 24">
-        <path fill="none" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
-      </symbol>
-      <symbol id="help-icon" viewBox="0 0 24 24">
-        <path fill="none" stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-      </symbol>
-    </svg>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 </html>

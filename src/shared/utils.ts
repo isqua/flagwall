@@ -1,4 +1,7 @@
-export function querySelectorSafe<T extends Element = Element>(selector: string, root: ParentNode = document): T {
+export function querySelectorSafe<T extends Element = Element>(
+    selector: string,
+    root: ParentNode = document,
+): T {
     const element = root.querySelector<T>(selector);
 
     if (!element) {
@@ -33,7 +36,10 @@ export function toArrayOfStrings(data: FormDataEntryValue[]): string[] {
 }
 
 export function isCheckable(element: Element): element is HTMLInputElement {
-    return element instanceof HTMLInputElement && (element.type === "checkbox" || element.type === "radio");
+    return (
+        element instanceof HTMLInputElement &&
+        (element.type === "checkbox" || element.type === "radio")
+    );
 }
 
 export function loadImage(src: string): Promise<HTMLImageElement> {
@@ -48,11 +54,11 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 export async function getFullfiled<T>(promises: Promise<T>[]): Promise<T[]> {
-    const results = await Promise.allSettled(promises)
+    const results = await Promise.allSettled(promises);
 
     return results.reduce<T[]>((acc, result) => {
-        if (result.status === 'fulfilled') {
-            acc.push(result.value)
+        if (result.status === "fulfilled") {
+            acc.push(result.value);
         }
 
         return acc;
@@ -74,10 +80,7 @@ export function debounce<TArgs extends unknown[]>(
             clearTimeout(timer);
         }
 
-        timer = window.setTimeout(
-            () => callback(...args),
-            delayInMs,
-        );
+        timer = window.setTimeout(() => callback(...args), delayInMs);
     };
 
     return debouncedFunc;

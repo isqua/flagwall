@@ -1,9 +1,9 @@
-import { TabsAutomatic } from './Tabs';
+import { TabsAutomatic } from "./Tabs";
 
-import './Sidebar.css';
+import "./Sidebar.css";
 
-const CLOSED_MENU_CLASS = 'hidden';
-const EXPANDED = 'aria-expanded';
+const CLOSED_MENU_CLASS = "hidden";
+const EXPANDED = "aria-expanded";
 
 export class Sidebar {
     constructor(
@@ -21,7 +21,8 @@ export class Sidebar {
         document.addEventListener("click", (event) => {
             const target = event.target as HTMLElement;
             const clickedInsideMenu = this.sidebar.contains(target);
-            const clickedOnMenuButton = target === this.control || this.control.contains(target);
+            const clickedOnMenuButton =
+                target === this.control || this.control.contains(target);
 
             if (!clickedInsideMenu && !clickedOnMenuButton) {
                 this.toggle(false);
@@ -30,16 +31,16 @@ export class Sidebar {
     }
 
     isOpen() {
-        return this.control.getAttribute(EXPANDED) === 'true';
+        return this.control.getAttribute(EXPANDED) === "true";
     }
 
     toggle(open: boolean) {
         if (open) {
-            this.control.setAttribute(EXPANDED, 'true');
+            this.control.setAttribute(EXPANDED, "true");
             this.sidebar.classList.remove(CLOSED_MENU_CLASS);
             this.sidebar.focus();
         } else {
-            this.control.setAttribute(EXPANDED, 'false');
+            this.control.setAttribute(EXPANDED, "false");
             this.sidebar.classList.add(CLOSED_MENU_CLASS);
         }
     }

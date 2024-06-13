@@ -21,7 +21,9 @@ export class TabsAutomatic {
 
         for (let i = 0; i < this.tabs.length; i += 1) {
             const tab = this.tabs[i];
-            const tabpanel = document.getElementById(tab.getAttribute("aria-controls") ?? "");
+            const tabpanel = document.getElementById(
+                tab.getAttribute("aria-controls") ?? "",
+            );
 
             if (!tabpanel) {
                 continue;

@@ -5,10 +5,10 @@ export default defineConfig({
     plugins: [
         viteStaticCopy({
             targets: [
-                { 
-                    src:  'node_modules/flag-icons/flags/4x3/*.svg',
-                    dest: 'node_modules/flag-icons/flags/4x3/',
-                }
+                {
+                    src: "node_modules/flag-icons/flags/4x3/*.svg",
+                    dest: "node_modules/flag-icons/flags/4x3/",
+                },
             ],
         }),
     ],

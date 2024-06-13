@@ -33,7 +33,7 @@ input:focus + .country-label {
 .country-flag {
     margin-block-start: 1px;
     margin-inline-end: 12px;
-    outline: 1px solid rgba(255,255,255,0.5);
+    outline: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 input:checked + .country-label {

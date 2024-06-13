@@ -5,7 +5,7 @@ import "./ColorSelector.css";
 type Color = {
     name: string;
     code: string;
-}
+};
 
 const colors: Color[] = [
     {
@@ -50,18 +50,28 @@ export class ColorSelector {
     constructor(
         private container: HTMLElement,
         private template: HTMLTemplateElement,
-    ) { }
+    ) {}
 
     initialize() {
-        colors.forEach(color => {
-            const clone = this.template.content.cloneNode(true) as HTMLLIElement;
+        colors.forEach((color) => {
+            const clone = this.template.content.cloneNode(
+                true,
+            ) as HTMLLIElement;
             const id = color.code.replace("#", "");
 
-            querySelectorSafe<HTMLInputElement>("input", clone).value = color.code;
+            querySelectorSafe<HTMLInputElement>("input", clone).value =
+                color.code;
             querySelectorSafe<HTMLInputElement>("input", clone).id = id;
-            querySelectorSafe<HTMLLabelElement>("label", clone).setAttribute("for", id);
-            querySelectorSafe<HTMLSpanElement>(".color-name", clone).innerText = color.name;
-            querySelectorSafe<HTMLSpanElement>(".color-flag", clone).style.backgroundColor = color.code;
+            querySelectorSafe<HTMLLabelElement>("label", clone).setAttribute(
+                "for",
+                id,
+            );
+            querySelectorSafe<HTMLSpanElement>(".color-name", clone).innerText =
+                color.name;
+            querySelectorSafe<HTMLSpanElement>(
+                ".color-flag",
+                clone,
+            ).style.backgroundColor = color.code;
 
             this.container.appendChild(clone);
         });
