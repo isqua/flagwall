@@ -18,7 +18,7 @@ export class Settings {
         if (data.countries) {
             const inputs = this.form.querySelectorAll("input[name=country]");
 
-            for (let input of inputs) {
+            for (const input of inputs) {
                 if (isCheckable(input)) {
                     input.checked = countries.has(input.value);
                 }

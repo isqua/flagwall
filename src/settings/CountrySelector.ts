@@ -31,8 +31,8 @@ export class CountrySelector {
     setVisibleCountries(codes: Set<string>) {
         const countries = this.container.querySelectorAll<HTMLElement>("[data-code]");
 
-        for (let country of countries) {
-            const code = country.dataset.code!;
+        for (const country of countries) {
+            const code = country.dataset.code as string;
 
             country.classList.toggle(HIDDEN_CLS, !codes.has(code));
         }

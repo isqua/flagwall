@@ -46,7 +46,7 @@ export class TabsAutomatic {
 
     setSelectedTab(currentTab: HTMLElement | null, setFocus: boolean = true) {
         for (let i = 0; i < this.tabs.length; i += 1) {
-            var tab = this.tabs[i];
+            const tab = this.tabs[i];
             if (currentTab === tab) {
                 tab.setAttribute("aria-selected", "true");
                 tab.removeAttribute("tabindex");
@@ -72,7 +72,7 @@ export class TabsAutomatic {
     }
 
     setSelectedToNextTab(currentTab: HTMLElement) {
-        var index;
+        let index;
 
         if (currentTab === this.lastTab) {
             this.setSelectedTab(this.firstTab);
@@ -83,7 +83,7 @@ export class TabsAutomatic {
     }
 
     onKeydown(event: KeyboardEvent) {
-        let tgt = event.currentTarget;
+        const tgt = event.currentTarget;
         let flag = false;
 
         if (tgt instanceof HTMLElement) {
