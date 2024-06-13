@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base=\"${PUBLIC_URL:-/}\"",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "eslint": "eslint .",
+    "lint": "npm run eslint"
   },
   "dependencies": {
     "flag-icons": "7.2.1"
