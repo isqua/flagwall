@@ -8,7 +8,11 @@
     "build": "tsc && vite build --base=\"${PUBLIC_URL:-/}\"",
     "preview": "vite preview",
     "eslint": "eslint .",
-    "lint": "npm run eslint"
+    "eslint:fix": "eslint --fix .",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint": "npm run eslint && npm run prettier",
+    "lint:fix": "npm run eslint:fix ; npm run prettier:fix"
   },
   "dependencies": {
     "flag-icons": "7.2.1"
