@@ -23,6 +23,14 @@
     pointer-events: none;
 }
 
+.sidebar-sticky-header {
+    background-color: #334155;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-block-start: 12px;
+}
+
 .sidebar-tablist {
     flex-basis: 44px;
     flex-shrink: 0;
@@ -46,9 +54,16 @@
 .sidebar-content {
     max-height: 100%;
     overflow: auto;
-    padding: 12px 12px 12px 0;
-    box-sizing: border-box;
+    padding: 0;
     flex-grow: 1;
+}
+
+.sidebar-tabpanel {
+    padding: 12px 12px 12px 0;
+}
+
+.sidebar-tabpanel.with-header {
+    padding-block-start: 0;
 }
 
 .sidebar-control {
