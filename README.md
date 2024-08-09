@@ -1,5 +1,7 @@
 # flagwall
 
+[![Flagwall: create your personalized wallpaper](./public/flagwall.910d720c.png)](https://isqua.github.io/flagwall/)
+
 I made this app for myself and friends. I wanted to put flags of visited countries on my phone's lock screen. That's why I made this simple application where you can select countries and background color, and download a picture with flags to your phone.
 
 How to start application locally:
