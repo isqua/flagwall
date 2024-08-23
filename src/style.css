@@ -80,6 +80,10 @@ body {
     margin: 0 0 12px;
 }
 
+.footer a {
+    color: inherit;
+}
+
 .footer:hover .footer-inner,
 .footer:focus .footer-inner,
 .footer:active .footer-inner {
