@@ -4,7 +4,7 @@ const DPI = window.devicePixelRatio || 1;
 const INITIAL_WIDTH = window.screen.width * DPI;
 const INITIAL_HEIGHT = window.screen.height * DPI;
 const INITIAL_COLOR = "#5f6a5e";
-const BORDER_COLOR = "#fff";
+const BORDER_COLOR = "rgba(255,255,255,0.3)";
 const READY_CLASS_NAME = "ready";
 
 const FLAG_HEIGHT = 30 * DPI;
