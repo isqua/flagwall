@@ -4,8 +4,8 @@ import { Landing } from "./landing";
 import {
     ColorAdd,
     ColorSelector,
+    CountriesList,
     CountrySearch,
-    CountrySelector,
     Settings,
 } from "./settings";
 import { getFullfiled, loadImage, querySelectorSafe } from "./shared/utils";
@@ -33,7 +33,7 @@ const countrySearch = new CountrySearch(
     countries,
 );
 
-const countrySelector = new CountrySelector(
+const countriesList = new CountriesList(
     querySelectorSafe<HTMLUListElement>(".countries-list"),
     querySelectorSafe<HTMLTemplateElement>("#country"),
 );
@@ -68,7 +68,7 @@ async function draw({ countries, background }: SettingsData) {
 function main() {
     const codes = state.getCodes();
 
-    countrySelector.initialize(countries);
+    countriesList.initialize(countries);
     colorSelector.initialize();
     colorAdd.initialize((value) =>
         colorSelector.appendColorOption({ code: value, name: value }),
@@ -84,7 +84,7 @@ function main() {
     });
 
     countrySearch.onChange((visibleCountries) => {
-        countrySelector.setVisibleCountries(visibleCountries);
+        countriesList.setVisibleCountries(visibleCountries);
     });
 
     sidebar.initialize();

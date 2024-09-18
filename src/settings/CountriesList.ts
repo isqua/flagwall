@@ -3,11 +3,11 @@ import { querySelectorSafe } from "../shared/utils";
 
 import type { Country } from "flag-icons";
 
-import "./CountrySelector.css";
+import "./CountriesList.css";
 
 const HIDDEN_CLS = "country-hidden";
 
-export class CountrySelector {
+export class CountriesList {
     constructor(
         private container: HTMLElement,
         private template: HTMLTemplateElement,
