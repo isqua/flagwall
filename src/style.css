@@ -40,6 +40,14 @@ body {
     display: none;
 }
 
+.button {
+    padding: 6px 8px;
+    border: none;
+    border-radius: 6px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
 .faq {
     margin: 0;
     padding: 4px 0 0;
