@@ -53,27 +53,26 @@ export class ColorSelector {
     ) {}
 
     initialize() {
-        colors.forEach((color) => {
-            const clone = this.template.content.cloneNode(
-                true,
-            ) as HTMLLIElement;
-            const id = color.code.replace("#", "");
+        colors.forEach((color) => this.appendColorOption(color));
+    }
 
-            querySelectorSafe<HTMLInputElement>("input", clone).value =
-                color.code;
-            querySelectorSafe<HTMLInputElement>("input", clone).id = id;
-            querySelectorSafe<HTMLLabelElement>("label", clone).setAttribute(
-                "for",
-                id,
-            );
-            querySelectorSafe<HTMLSpanElement>(".color-name", clone).innerText =
-                color.name;
-            querySelectorSafe<HTMLSpanElement>(
-                ".color-flag",
-                clone,
-            ).style.backgroundColor = color.code;
+    private appendColorOption(color: Color) {
+        const clone = this.template.content.cloneNode(true) as HTMLLIElement;
+        const id = color.code.replace("#", "");
 
-            this.container.appendChild(clone);
-        });
+        querySelectorSafe<HTMLInputElement>("input", clone).value = color.code;
+        querySelectorSafe<HTMLInputElement>("input", clone).id = id;
+        querySelectorSafe<HTMLLabelElement>("label", clone).setAttribute(
+            "for",
+            id,
+        );
+        querySelectorSafe<HTMLSpanElement>(".color-name", clone).innerText =
+            color.name;
+        querySelectorSafe<HTMLSpanElement>(
+            ".color-flag",
+            clone,
+        ).style.backgroundColor = color.code;
+
+        this.container.appendChild(clone);
     }
 }
