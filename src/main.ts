@@ -3,7 +3,7 @@ import { CanvasManager, ImageGenerator } from "./images";
 import { Landing } from "./landing";
 import {
     ColorAdd,
-    ColorSelector,
+    ColorsList,
     CountriesList,
     CountrySearch,
     Settings,
@@ -38,7 +38,7 @@ const countriesList = new CountriesList(
     querySelectorSafe<HTMLTemplateElement>("#country"),
 );
 
-const colorSelector = new ColorSelector(
+const colorsList = new ColorsList(
     querySelectorSafe<HTMLUListElement>(".colors-list"),
     querySelectorSafe<HTMLTemplateElement>("#color"),
 );
@@ -69,9 +69,9 @@ function main() {
     const codes = state.getCodes();
 
     countriesList.initialize(countries);
-    colorSelector.initialize();
+    colorsList.initialize();
     colorAdd.initialize((value) =>
-        colorSelector.appendColorOption({ code: value, name: value }),
+        colorsList.appendColorOption({ code: value, name: value }),
     );
     settings.initialize({ countries: codes });
     generator.initialize();

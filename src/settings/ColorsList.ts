@@ -1,6 +1,6 @@
 import { querySelectorSafe } from "../shared/utils";
 
-import "./ColorSelector.css";
+import "./ColorsList.css";
 
 type Color = {
     name: string;
@@ -46,7 +46,7 @@ const colors: Color[] = [
     },
 ];
 
-export class ColorSelector {
+export class ColorsList {
     constructor(
         private container: HTMLElement,
         private template: HTMLTemplateElement,
