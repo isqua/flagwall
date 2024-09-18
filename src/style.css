@@ -46,6 +46,8 @@ body {
     border-radius: 6px;
     line-height: 20px;
     cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 .faq {

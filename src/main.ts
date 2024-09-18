@@ -2,6 +2,7 @@ import { countries, getFlagSrc } from "./flags";
 import { CanvasManager, ImageGenerator } from "./images";
 import { Landing } from "./landing";
 import {
+    ColorAdd,
     ColorSelector,
     CountrySearch,
     CountrySelector,
@@ -42,6 +43,11 @@ const colorSelector = new ColorSelector(
     querySelectorSafe<HTMLTemplateElement>("#color"),
 );
 
+const colorAdd = new ColorAdd(
+    querySelectorSafe<HTMLButtonElement>(".add-color"),
+    querySelectorSafe<HTMLDialogElement>(".add-color-dialog"),
+);
+
 const settings = new Settings(querySelectorSafe<HTMLFormElement>("form"));
 const manager = new CanvasManager(
     querySelectorSafe<HTMLCanvasElement>(".canvas"),
@@ -64,6 +70,9 @@ function main() {
 
     countrySelector.initialize(countries);
     colorSelector.initialize();
+    colorAdd.initialize((value) =>
+        colorSelector.appendColorOption({ code: value, name: value }),
+    );
     settings.initialize({ countries: codes });
     generator.initialize();
     draw(settings.getData());

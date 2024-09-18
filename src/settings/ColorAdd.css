@@ -1,0 +1,54 @@
+.add-color {
+    display: flex;
+    background-color: #475569;
+    color: #fff;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.add-color:focus,
+.add-color:active {
+    background-color: #94a3b8;
+}
+
+.add-color-icon {
+    width: 24px;
+    height: 18px;
+    margin-block-start: 1px;
+    margin-inline-end: 12px;
+}
+
+.add-color-icon svg {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.add-color-dialog {
+    text-align: center;
+    padding: 20px 24px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    background: #475569;
+    color: #fff;
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 20rem;
+    z-index: 2;
+}
+
+.add-color-dialog-title {
+    font-size: inherit;
+}
+
+.new-color-actions {
+    display: flex;
+    margin-block-start: 16px;
+    gap: 16px;
+}
+
+.new-color-button {
+    flex-grow: 1;
+    background-color: #94a3b8;
+    color: #fff;
+    text-align: center;
+}

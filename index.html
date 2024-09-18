@@ -177,6 +177,25 @@
                         class="sidebar-tabpanel sidebar-tabpanel-hidden"
                     >
                         <ul class="colors-list"></ul>
+                        <button type="button" class="button add-color">
+                            <span class="add-color-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="3"
+                                    stroke="currentColor"
+                                    class="size-6"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 4.5v15m7.5-7.5h-15"
+                                    />
+                                </svg>
+                            </span>
+                            <span class="add-color-text">Add color</span>
+                        </button>
                     </div>
                     <div
                         id="help"
@@ -270,6 +289,28 @@
                     </p>
                 </div>
             </footer>
+            <dialog class="add-color-dialog">
+                <h1 class="add-color-dialog-title">Add Color</h1>
+                <form name="new-color" method="dialog">
+                    <input name="color" type="color" />
+                    <div class="new-color-actions">
+                        <button
+                            class="button new-color-button"
+                            type="submit"
+                            name="add"
+                        >
+                            Add
+                        </button>
+                        <button
+                            class="button new-color-button"
+                            type="button"
+                            name="cancel"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </dialog>
         </div>
         <template id="country">
             <li class="country-item">
