@@ -7,16 +7,16 @@ const INITIAL_COLOR = "#5f6a5e";
 const BORDER_COLOR = "rgba(255,255,255,0.3)";
 const READY_CLASS_NAME = "ready";
 
-const FLAG_HEIGHT = 30 * DPI;
-const FLAG_WIDTH = 40 * DPI;
-const FLAG_GAP = 8 * DPI;
-
 export type RenderParams = {
     flags: HTMLImageElement[];
     background: string;
 };
 
 export class ImageGenerator {
+    #flagHeight = 30 * DPI;
+    #flagWidth = 40 * DPI;
+    #flagGap = 8 * DPI;
+
     constructor(
         private canvas: CanvasManager,
         private image: HTMLImageElement,
@@ -26,7 +26,8 @@ export class ImageGenerator {
         const maxFlags = Math.max(
             1,
             Math.floor(
-                (this.canvas.width - FLAG_GAP * 2) / (FLAG_GAP + FLAG_WIDTH),
+                (this.canvas.width - this.#flagGap * 2) /
+                    (this.#flagGap + this.#flagWidth),
             ),
         );
 
@@ -56,36 +57,42 @@ export class ImageGenerator {
 
         const rows = this.#splitFlagsByRows(flags);
 
-        let y = centerY - FLAG_HEIGHT / 2;
+        let y = centerY - this.#flagHeight / 2;
 
-        if (rows.length * (FLAG_HEIGHT + FLAG_GAP) > centerY) {
+        if (rows.length * (this.#flagHeight + this.#flagGap) > centerY) {
             y = Math.max(
-                FLAG_GAP,
-                this.canvas.height - (FLAG_HEIGHT + FLAG_GAP) * rows.length,
+                this.#flagGap,
+                this.canvas.height -
+                    (this.#flagHeight + this.#flagGap) * rows.length,
             );
         }
 
         for (const row of rows) {
             let x =
-                centerX - (row.length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
+                centerX -
+                (row.length * (this.#flagWidth + this.#flagGap) -
+                    this.#flagGap) /
+                    2;
 
             for (const flag of row) {
                 this.canvas.drawImage(flag, {
                     x,
                     y,
-                    width: FLAG_WIDTH,
-                    height: FLAG_HEIGHT,
+                    width: this.#flagWidth,
+                    height: this.#flagHeight,
                     borderWidth: DPI,
                     borderColor: BORDER_COLOR,
                 });
 
-                x += FLAG_WIDTH + FLAG_GAP;
+                x += this.#flagWidth + this.#flagGap;
             }
 
             x =
                 centerX -
-                (rows[0].length * (FLAG_WIDTH + FLAG_GAP) - FLAG_GAP) / 2;
-            y += FLAG_HEIGHT + FLAG_GAP;
+                (rows[0].length * (this.#flagWidth + this.#flagGap) -
+                    this.#flagGap) /
+                    2;
+            y += this.#flagHeight + this.#flagGap;
         }
 
         this.canvas.reflectTo(this.image);
