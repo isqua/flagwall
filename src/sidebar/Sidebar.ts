@@ -19,7 +19,7 @@ export class Sidebar {
         });
 
         document.addEventListener("click", (event) => {
-            if (this.isOutsideClick(event)) {
+            if (this.#isOutsideClick(event)) {
                 this.toggle(false);
             }
         });
@@ -40,7 +40,7 @@ export class Sidebar {
         }
     }
 
-    private isOutsideClick(event: MouseEvent) {
+    #isOutsideClick(event: MouseEvent) {
         const target = event.target as HTMLElement;
         const clickedInsideMenu = this.sidebar.contains(target);
         const clickedOnMenuButton =

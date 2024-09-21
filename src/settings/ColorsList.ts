@@ -56,7 +56,7 @@ export class ColorsList {
         colors.forEach((color) => this.appendColorOption(color));
     }
 
-    public appendColorOption(color: Color) {
+    appendColorOption(color: Color) {
         const clone = this.template.content.cloneNode(true) as HTMLLIElement;
         const id = color.code.replace("#", "");
 

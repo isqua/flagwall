@@ -5,37 +5,37 @@ import "./ColorAdd.css";
 type AddColorCallback = (color: string) => void;
 
 export class ColorAdd {
-    private colorForm: HTMLFormElement;
+    #colorForm: HTMLFormElement;
 
     constructor(
         private opener: HTMLButtonElement,
         private dialog: HTMLDialogElement,
     ) {
-        this.colorForm = querySelectorSafe<HTMLFormElement>("form", dialog);
+        this.#colorForm = querySelectorSafe<HTMLFormElement>("form", dialog);
     }
 
     initialize() {
-        this.opener.addEventListener("click", () => this.showPopup());
+        this.opener.addEventListener("click", () => this.#showPopup());
 
-        this.colorForm
+        this.#colorForm
             .querySelector('button[type="button"]')
-            ?.addEventListener("click", () => this.hidePopup());
+            ?.addEventListener("click", () => this.#hidePopup());
     }
 
-    public onAdd(callback: AddColorCallback) {
-        this.colorForm.addEventListener("submit", () => {
-            const value = this.colorForm.color.value;
+    onAdd(callback: AddColorCallback) {
+        this.#colorForm.addEventListener("submit", () => {
+            const value = this.#colorForm.color.value;
 
             callback(value);
         });
     }
 
-    private showPopup() {
+    #showPopup() {
         this.dialog.showModal();
-        setTimeout(() => this.colorForm.color.click(), 10);
+        setTimeout(() => this.#colorForm.color.click(), 10);
     }
 
-    private hidePopup() {
+    #hidePopup() {
         this.dialog.close();
     }
 }
