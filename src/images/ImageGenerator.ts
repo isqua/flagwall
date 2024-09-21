@@ -40,7 +40,27 @@ export class ImageGenerator {
         return rows;
     }
 
+    #adjustFlagSize(width: number, height: number) {
+        if (Math.min(width, height) > 500) {
+            this.#flagHeight = 42 * DPI;
+            this.#flagWidth = 56 * DPI;
+            this.#flagGap = 12 * DPI;
+        }
+        if (Math.min(width, height) > 640) {
+            this.#flagHeight = 48 * DPI;
+            this.#flagWidth = 64 * DPI;
+            this.#flagGap = 12 * DPI;
+        }
+        if (Math.min(width, height) > 1000) {
+            this.#flagHeight = 60 * DPI;
+            this.#flagWidth = 80 * DPI;
+            this.#flagGap = 16 * DPI;
+        }
+    }
+
     initialize() {
+        this.#adjustFlagSize(window.screen.width, window.screen.height);
+
         this.canvas
             .setSize(INITIAL_WIDTH, INITIAL_HEIGHT)
             .fill(INITIAL_COLOR)
