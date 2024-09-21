@@ -14,18 +14,20 @@ export class ColorAdd {
         this.colorForm = querySelectorSafe<HTMLFormElement>("form", dialog);
     }
 
-    initialize(onAdd: AddColorCallback) {
+    initialize() {
         this.opener.addEventListener("click", () => this.showPopup());
-
-        this.colorForm.addEventListener("submit", () => {
-            const value = this.colorForm.color.value;
-
-            onAdd(value);
-        });
 
         this.colorForm
             .querySelector('button[type="button"]')
             ?.addEventListener("click", () => this.hidePopup());
+    }
+
+    public onAdd(callback: AddColorCallback) {
+        this.colorForm.addEventListener("submit", () => {
+            const value = this.colorForm.color.value;
+
+            callback(value);
+        });
     }
 
     private showPopup() {

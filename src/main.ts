@@ -70,12 +70,14 @@ function main() {
 
     countriesList.initialize(countries);
     colorsList.initialize();
-    colorAdd.initialize((value) =>
-        colorsList.appendColorOption({ code: value, name: value }),
-    );
+    colorAdd.initialize();
     settings.initialize({ countries: codes });
     generator.initialize();
     draw(settings.getData());
+
+    colorAdd.onAdd((value) =>
+        colorsList.appendColorOption({ code: value, name: value }),
+    );
 
     settings.onChange((data) => {
         state.writeCodes(data.countries);
