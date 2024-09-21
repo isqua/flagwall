@@ -19,12 +19,7 @@ export class Sidebar {
         });
 
         document.addEventListener("click", (event) => {
-            const target = event.target as HTMLElement;
-            const clickedInsideMenu = this.sidebar.contains(target);
-            const clickedOnMenuButton =
-                target === this.control || this.control.contains(target);
-
-            if (!clickedInsideMenu && !clickedOnMenuButton) {
+            if (this.isOutsideClick(event)) {
                 this.toggle(false);
             }
         });
@@ -43,5 +38,14 @@ export class Sidebar {
             this.control.setAttribute(EXPANDED, "false");
             this.sidebar.classList.add(CLOSED_MENU_CLASS);
         }
+    }
+
+    private isOutsideClick(event: MouseEvent) {
+        const target = event.target as HTMLElement;
+        const clickedInsideMenu = this.sidebar.contains(target);
+        const clickedOnMenuButton =
+            target === this.control || this.control.contains(target);
+
+        return !clickedInsideMenu && !clickedOnMenuButton;
     }
 }
