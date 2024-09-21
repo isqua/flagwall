@@ -75,9 +75,10 @@ function main() {
     generator.initialize();
     draw(settings.getData());
 
-    colorAdd.onAdd((value) =>
-        colorsList.appendColorOption({ code: value, name: value }),
-    );
+    colorAdd.onAdd((value) => {
+        colorsList.appendColorOption({ code: value, name: value });
+        settings.setColor(value);
+    });
 
     settings.onChange((data) => {
         state.writeCodes(data.countries);

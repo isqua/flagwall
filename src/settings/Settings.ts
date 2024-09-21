@@ -53,4 +53,11 @@ export class Settings {
             background,
         };
     }
+
+    setColor(color: string) {
+        this.form["background"].value = color;
+
+        const changeEvent = new Event("change", { bubbles: true });
+        this.form.dispatchEvent(changeEvent);
+    }
 }
